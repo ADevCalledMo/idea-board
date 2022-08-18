@@ -13,14 +13,17 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/ideas">Ideas</Link>
+              <Link to="/ideas/Ongoing">Ideas</Link>
+            </li>
+            <li>
+              <Link to="/ideas/Archived">Archived Ideas</Link>
             </li>
           </ul>
         </nav>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/ideas" element={<Ideas />} />
+            <Route path="/ideas/:stage" element={<Ideas />} />
           </Routes>
         </main>
       </div>
