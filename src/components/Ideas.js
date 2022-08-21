@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import IdeaCard from "./IdeaCard";
 
 const Ideas = () => {
   const [ideas, setIdeas] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [archived, setArchived] = useState(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -15,12 +17,15 @@ const Ideas = () => {
         id: ideas.length + 1,
         name: name,
         description: description,
+        archived: archived,
       },
     ]);
 
     setName("");
     setDescription("");
   };
+
+  // console.log(ideas[0].name, "<--- ideas");
 
   return (
     <>
@@ -47,10 +52,12 @@ const Ideas = () => {
         </form>
 
         <div>
-          <ul>
-            {ideas.map((idea) => (
-              <li>
-                `${idea.name}: ${idea.description}`<button>Delete</button>
+          <ul className="ideas-front">
+            {ideas.map(idea => (
+              <li key={idea.id}>
+                <IdeaCard details={ideas} />
+                <button>Delete</button>
+                <button>Archive</button>
               </li>
             ))}
           </ul>
