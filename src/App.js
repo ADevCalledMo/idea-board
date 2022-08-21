@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Ideas from "./components/Ideas";
 import "./App.css";
+import Archived from "./components/Archived.js";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/ideas/Ongoing">Ideas</Link>
+                <Link to="/ideas/">Ideas</Link>
               </li>
               <li>
                 <Link to="/ideas/Archived">Archived Ideas</Link>
@@ -48,7 +49,8 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/ideas/:stage" element={<Ideas />} />
+              <Route path="/ideas/" element={<Ideas />} />
+              <Route path="/ideas/Archived" element={<Archived />} />
             </Routes>
           </main>
         </div>
