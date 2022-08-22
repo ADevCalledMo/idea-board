@@ -37,20 +37,24 @@ const Ideas = () => {
         <p>Here is where all of your ideas are kept...</p>
 
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="idea-name">Idea Name: </label>
-          <input
-            id="idea-name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="idea-description">Description: </label>
-          <input
-            id="idea-description"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+          <div>
+            <label htmlFor="idea-name">Idea Name: </label>
+            <input
+              id="idea-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="idea-description">Description: </label>
+            <input
+              id="idea-description"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>  
           <input type="submit" value="Add Idea" />
         </form>
 
@@ -58,7 +62,7 @@ const Ideas = () => {
           <ul className="ideas-front">
             {ideas.map((idea) => (
               <li key={idea.id}>
-                <IdeaCard details={ideas} />
+                <IdeaCard details={idea} />
                 <button onClick={() => handleDeleteClick(idea.id)}>
                   Delete
                 </button>

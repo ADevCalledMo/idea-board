@@ -1,7 +1,6 @@
 import React from "react";
 
 const IdeaCard = (props) => {
-  console.log(props.details[0].name, "<-- props");
   const { details } = props;
 
   return (
