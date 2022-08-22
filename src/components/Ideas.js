@@ -6,7 +6,7 @@ const Ideas = () => {
   const [ideas, setIdeas] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [archived, setArchived] = useState(false);
+  // const [archived, setArchived] = useState(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +17,6 @@ const Ideas = () => {
         id: ideas.length + 1,
         name: name,
         description: description,
-        archived: archived,
       },
     ]);
 
@@ -26,6 +25,10 @@ const Ideas = () => {
   };
 
   // console.log(ideas[0].name, "<--- ideas");
+
+  const handleDeleteClick = (id) => {
+    setIdeas(ideas.filter((idea) => idea.id !== id));
+  };
 
   return (
     <>
@@ -53,10 +56,12 @@ const Ideas = () => {
 
         <div>
           <ul className="ideas-front">
-            {ideas.map(idea => (
+            {ideas.map((idea) => (
               <li key={idea.id}>
                 <IdeaCard details={ideas} />
-                <button>Delete</button>
+                <button onClick={() => handleDeleteClick(idea.id)}>
+                  Delete
+                </button>
                 <button>Archive</button>
               </li>
             ))}
