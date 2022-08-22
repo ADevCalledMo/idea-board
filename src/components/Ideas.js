@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import IdeaCard from "./IdeaCard";
 
 const Ideas = () => {
-  const [ideas, setIdeas] = useState([]);
+  const [ideas, setIdeas] = useState(() => {
+    return JSON.parse(localStorage.getItem("ideas"));
+  });
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   // const [archived, setArchived] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("ideas", JSON.stringify(ideas));
+  }, [ideas]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -54,7 +60,7 @@ const Ideas = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </div>  
+          </div>
           <input type="submit" value="Add Idea" />
         </form>
 
