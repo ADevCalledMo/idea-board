@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import IdeaCard from "./IdeaCard";
+import Column from "./Column";
+// import IdeaCard from "./IdeaCard";
+
 
 const Ideas = () => {
   const [ideas, setIdeas] = useState(() => {
@@ -63,20 +65,11 @@ const Ideas = () => {
           </div>
           <input type="submit" value="Add Idea" />
         </form>
+        <Column 
+          ideas={ideas}
+          onDeleteClick={handleDeleteClick}
+        />
 
-        <div>
-          <ul className="ideas-front">
-            {ideas.map((idea) => (
-              <li key={idea.id}>
-                <IdeaCard details={idea} />
-                <button onClick={() => handleDeleteClick(idea.id)}>
-                  Delete
-                </button>
-                <button>Archive</button>
-              </li>
-            ))}
-          </ul>
-        </div>
         <Link to="/">Back Home</Link>
       </div>
     </>
