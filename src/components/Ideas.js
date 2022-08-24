@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import Column from "./Column";
 // import IdeaCard from "./IdeaCard";
 
-
 const Ideas = () => {
+  const status = ["Pending", "Working On", "Finished"];
+
   const [ideas, setIdeas] = useState(() => {
     return JSON.parse(localStorage.getItem("ideas"));
   });
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [selected, setSelected] = useState(status[0]);
   // const [archived, setArchived] = useState(false);
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const Ideas = () => {
         id: ideas.length + 1,
         name: name,
         description: description,
+        selected: selected,
       },
     ]);
 
@@ -37,6 +40,7 @@ const Ideas = () => {
   const handleDeleteClick = (id) => {
     setIdeas(ideas.filter((idea) => idea.id !== id));
   };
+
 
   return (
     <>
@@ -63,12 +67,21 @@ const Ideas = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+          <div>
+            <select
+              value={selected}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              {status.map((value) => (
+                <option value={value} key={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
           <input type="submit" value="Add Idea" />
         </form>
-        <Column 
-          ideas={ideas}
-          onDeleteClick={handleDeleteClick}
-        />
+        <Column ideas={ideas} onDeleteClick={handleDeleteClick} />
 
         <Link to="/">Back Home</Link>
       </div>
