@@ -2,7 +2,7 @@ import React from "react";
 
 const IdeaCard = (props) => {
   const { details } = props;
-  
+
   return (
     <div className="idea">
       <div className="idea-info">

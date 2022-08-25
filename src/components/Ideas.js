@@ -41,6 +41,10 @@ const Ideas = () => {
     setIdeas(ideas.filter((idea) => idea.id !== id));
   };
 
+  const pending = ideas.filter((idea) => idea.selected === "Pending");
+  const workingOn = ideas.filter((idea) => idea.selected === "Working On");
+  const finished = ideas.filter((idea) => idea.selected === "Finished");
+  console.log(pending, "<--- pending");
 
   return (
     <>
@@ -68,7 +72,9 @@ const Ideas = () => {
             />
           </div>
           <div>
+            <label htmlFor="idea-selected">Stage: </label>
             <select
+              id="idea-selected"
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
             >
@@ -81,7 +87,21 @@ const Ideas = () => {
           </div>
           <input type="submit" value="Add Idea" />
         </form>
-        <Column ideas={ideas} onDeleteClick={handleDeleteClick} />
+
+        <div className="app__columns">
+          <div>
+            <h1>Pending: </h1>
+            <Column ideas={pending} onDeleteClick={handleDeleteClick} />
+          </div>
+          <div>
+            <h1>Working On: </h1>
+            <Column ideas={workingOn} onDeleteClick={handleDeleteClick} />
+          </div>
+          <div>
+            <h1>Finished: </h1>
+            <Column ideas={finished} onDeleteClick={handleDeleteClick} />
+          </div>
+        </div>
 
         <Link to="/">Back Home</Link>
       </div>
