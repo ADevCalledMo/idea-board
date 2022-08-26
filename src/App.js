@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Ideas from "./components/Ideas";
 import "./App.css";
@@ -36,13 +42,34 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <NavLink
+                  to="/"
+                  style={({ isActive }) => ({
+                    color: isActive ? "green" : "blue",
+                  })}
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <Link to="/ideas/">Ideas</Link>
+                <NavLink
+                  to="/ideas/"
+                  style={({ isActive }) => ({
+                    color: isActive ? "green" : "blue",
+                  })}
+                >
+                  Ideas
+                </NavLink>
               </li>
               <li>
-                <Link to="/ideas/Archived">Archived Ideas</Link>
+                <NavLink
+                  to="/ideas/Archived"
+                  style={({ isActive }) => ({
+                    color: isActive ? "green" : "blue",
+                  })}
+                >
+                  Archived Ideas
+                </NavLink>
               </li>
             </ul>
           </nav>
