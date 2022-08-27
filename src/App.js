@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import Ideas from "./components/Ideas";
 import "./App.css";
 import Archived from "./components/Archived.js";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,6 +79,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/ideas/" element={<Ideas />} />
               <Route path="/ideas/Archived" element={<Archived />} />
+              <Route element={<NotFound />} />
             </Routes>
           </main>
         </div>
