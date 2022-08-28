@@ -13,8 +13,25 @@ code {
 }
 
 /* Nav Active */
+.App__navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: lightgray;
+}
 
+.App__navbar li {
+  float: left;
+}
 
+.App__navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
 /* Ideas UL */
 .ideas-front {

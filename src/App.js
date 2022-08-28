@@ -40,7 +40,7 @@ function App() {
       </div>
       {isLoggedIn && (
         <div className="App">
-          <nav>
+          <nav className="App__navbar">
             <ul>
               <li>
                 <NavLink
