@@ -7,6 +7,7 @@ const Home = () => {
             Home page
         </h1>
         <p>Welcome to the Idea Board</p>
+        
     </div>
   )
 }

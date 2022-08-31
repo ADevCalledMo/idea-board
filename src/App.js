@@ -6,6 +6,7 @@ import "./App.css";
 import Archived from "./components/Archived.js";
 import NotFound from "./components/NotFound";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,10 +36,12 @@ function App() {
         <button onClick={handleLogoutClick} disabled={!isLoggedIn}>
           Logout
         </button>
+        
       </div>
       {isLoggedIn && (
         <div className="App">
           <main>
+            
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/ideas/" element={<Ideas />} />
@@ -49,6 +52,7 @@ function App() {
         </div>
       )}
     </Router>
+    
   );
 }
 
